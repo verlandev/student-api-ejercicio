@@ -8,16 +8,18 @@ const database = require('./src/utils/database')
 database.connectDB()
 
 const indexRoutes = require('./src/api/index/index.routes')
-const teacherRoutes = require('./src/api/teachers/teacher.routes')
+const teachersRoutes = require('./src/api/teachers/teacher.routes')
 
 const server = express()
 
 
+
+
 server.use(express.json())
-
-
+server.use(express.urlencoded({extended:true}))
 
 server.use('/', indexRoutes)
+server.use('/teachers', teachersRoutes)
 
 
 server.use("*", (req, res, next) => {
