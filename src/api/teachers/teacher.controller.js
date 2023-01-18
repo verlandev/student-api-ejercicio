@@ -44,15 +44,17 @@ const createPost = async (req, res, next) => {
     }
 }
 
-const editPut = async(req,res, next) => {
+const editPut = async(req, res, next) => {
     try {
-        const { id } = req.params;
-        const fields = {... req.body};
+        const { id } = req.params; // req.params.id
+        const fields = {...req.body};
         const options = { new: true };
-        const edited = await Teacher.findByIdAndUpdate(id,fields,options)
-        return res.status(200).json(edited)
-    } catch (error){
-        return next(error)
+        console.log('fields en teacher', options);
+        const edited = await Teacher.findByIdAndUpdate(id, fields, options);
+        return res.status(200).json(edited);
+    }
+    catch(error) {
+        return next(error);
     }
 }
 

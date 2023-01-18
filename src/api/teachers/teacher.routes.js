@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", controller.indexGet);
 
-router.get("/id", controller.getById);
+router.get("/:id", controller.getById);
 
 router.get("/getbyname/:name", controller.getByName);
 
