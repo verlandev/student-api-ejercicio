@@ -13,7 +13,7 @@ const indexGet = async (req,res,next) => {
 const getById = async (req, res, next) => {
     try {
 
-        const {id} = req.params;
+        const { id } = req.params;
         const found = await Teacher.findById(id)
         return res.status(200).json(found)
     } catch (error) {
@@ -23,7 +23,7 @@ const getById = async (req, res, next) => {
 
 const getByName = async (req, res, next) => {
     try {
-        const {name} = req.params;
+        const { name } = req.params;
         const found = await Teacher.find({name: name});
         return res.status(200).json(found)
     }catch (error){
@@ -35,7 +35,7 @@ const createPost = async (req, res, next) => {
     try {
         console.log(req.body)
         const teacherToBeCreated = new Teacher(req.body);
-
+        
         const created = await teacherToBeCreated.save();
 
         return res.status(201).json(created)
@@ -46,9 +46,9 @@ const createPost = async (req, res, next) => {
 
 const editPut = async(req,res, next) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const fields = {... req.body};
-        const options = {new: true};
+        const options = { new: true };
         const edited = await Teacher.findByIdAndUpdate(id,fields,options)
         return res.status(200).json(edited)
     } catch (error){
@@ -73,9 +73,9 @@ const deleteTeacher = async (req, res, next) => {
 
 module.exports = {
     indexGet, 
+    createPost,
     getById,
     getByName,
-    createPost,
     deleteTeacher,
     editPut
 };

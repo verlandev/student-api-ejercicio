@@ -1,25 +1,29 @@
 const express = require('express');
+const database = require('./src/utils/database')
+const cors = require('cors')
+
+database.connectDB()
+
+
+const indexRoutes = require('./src/api/index/index.routes')
+const teachersRoutes = require('./src/api/teachers/teacher.routes')
+const studentsRoutes = require('./src/api/students/student.routes')
 
 const PORT = 3000;
 
 
-const database = require('./src/utils/database')
-
-database.connectDB()
-
-const indexRoutes = require('./src/api/index/index.routes')
-const teachersRoutes = require('./src/api/teachers/teacher.routes')
-
 const server = express()
 
+server.use(cors())
 
-
+// /teacherscreate
 
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
 
-server.use('/', indexRoutes)
+server.use('/students', studentsRoutes)
 server.use('/teachers', teachersRoutes)
+server.use('/', indexRoutes)
 
 
 server.use("*", (req, res, next) => {

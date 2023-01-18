@@ -5,14 +5,14 @@ const router = express.Router();
 
 router.get("/", controller.indexGet);
 
-router.get('/id', controller.getById);
+router.get("/id", controller.getById);
 
-router.get('/getbyname/:name', controller.getByName);
+router.get("/getbyname/:name", controller.getByName);
 
-router.post("create", controller.createPost);
+router.post("/create", controller.createPost);
 
-router.put('edit/:id', controller.editPut);
+router.put('/edit/:id', controller.editPut);
 
-router.delete('/delete/:id', controller.deleteTeacher)
+router.delete('/delete/:id', controller.deleteTeacher);
 
-module.exports = router
+module.exports = router;

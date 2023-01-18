@@ -1,6 +1,6 @@
 const mongoose = require ('mongoose')
 
-const DB_URL = "mongodb+srv://root:root@cluster0.nn1l6ms.mongodb.net/?retryWrites=true&w=majority"
+const DB_URL = "mongodb+srv://root:root@cluster0.nn1l6ms.mongodb.net/students-api?retryWrites=true&w=majority"
 
 const connectDB = async () => {
 
